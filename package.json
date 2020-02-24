@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.1.0",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.9.2",
     "node-fetch": "^2.6.0"
   }
 }
