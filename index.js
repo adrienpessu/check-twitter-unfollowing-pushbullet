@@ -57,9 +57,9 @@ function arr_diff (a1, a2) {
 }
 
 async function checkList() {
-  const list = await List.find({}).sort({date:1}).limit(2);
+  const list = await List.find({}).sort({date:-1}).limit(2);
   if(list.length > 1){
-    if(list[1].users.length - list[0].users.length > 0){
+    if(list[1].users.length - list[0].users.length != 0){
       const diff = arr_diff(list[0].users, list[1].users).filter(user => list[1].users.map(user => user.id).indexOf(user.id) > 0);
       await fetch("https://api.pushbullet.com/v2/pushes", {
         body: `{\"body\":\"${list[1].users.length - list[0].users.length} followers en moins, ${diff.map(user => user.name + ' ' + user.screen_name).join(', ')}\",\"title\":\"Unfollowing\",\"type\":\"note\"}`,
